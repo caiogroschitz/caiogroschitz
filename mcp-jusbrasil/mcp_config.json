@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "jusbrasil": {
+      "command": "python",
+      "args": ["-m", "src.server"],
+      "cwd": "/CAMINHO/ABSOLUTO/PARA/mcp-jusbrasil",
+      "env": {
+        "JUSBRASIL_EMAIL": "${JUSBRASIL_EMAIL}",
+        "JUSBRASIL_PASSWORD": "${JUSBRASIL_PASSWORD}"
+      }
+    }
+  }
+}
