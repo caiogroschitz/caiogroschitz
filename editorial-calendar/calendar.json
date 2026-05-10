@@ -1,0 +1,43 @@
+{
+  "sistema": "Calendário Editorial Jurídico",
+  "ano": 2026,
+  "configuracao": {
+    "frequencia_posts": "diaria",
+    "horario_publicacao_preferencial": "08:00",
+    "dias_ativos": ["segunda", "terca", "quarta", "quinta", "sexta", "sabado"],
+    "formatos_rotacao": ["carrossel", "reels", "linkedin", "carrossel", "seo_blog", "reels"],
+    "temas_evergreen": [
+      "golpe do pix falso atendente",
+      "empréstimo consignado não autorizado",
+      "invasão de conta bancária digital",
+      "responsabilidade bancária fraude eletrônica",
+      "whatsapp clonado golpe",
+      "sim swap portabilidade fraudulenta"
+    ],
+    "temas_sazonais": {
+      "janeiro": ["fraudes na volta das férias", "empréstimos de início de ano"],
+      "fevereiro": ["golpes de carnaval", "viagem e fraude de cartão"],
+      "março": ["imposto de renda fraude", "phishing receita federal"],
+      "abril": ["golpes de páscoa", "fake stores sazonal"],
+      "maio": ["dia das mães fraudes", "golpes marketplace"],
+      "junho": ["festas juninas golpes", "boleto falso"],
+      "julho": ["férias escolares fraudes", "compras online golpe"],
+      "agosto": ["volta às aulas fraudes", "fake loja de uniforme"],
+      "setembro": ["setembro amarelo e fraudes emocionais", "golpe do fgts"],
+      "outubro": ["outubro rosa e golpes de saúde", "empréstimo saúde falso"],
+      "novembro": ["black friday fraudes", "fake stores black friday", "pix black friday"],
+      "dezembro": ["golpes de natal", "compras de fim de ano", "viradas e golpes"]
+    }
+  },
+  "ciclos_executados": [],
+  "proxima_execucao": "09:00",
+  "metricas_acumuladas": {
+    "total_conteudos_gerados": 0,
+    "total_carrosseIs": 0,
+    "total_reels": 0,
+    "total_artigos_seo": 0,
+    "total_linkedin": 0,
+    "total_pautas_aprovadas": 0,
+    "total_pautas_reprovadas": 0
+  }
+}
