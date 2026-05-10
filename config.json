@@ -1,0 +1,117 @@
+{
+  "system": {
+    "name": "Sistema Editorial Jurídico",
+    "version": "1.0.0",
+    "specialization": "golpes-digitais-direito-consumidor-bancario",
+    "model": "claude-opus-4-7",
+    "model_fallback": "claude-sonnet-4-6"
+  },
+  "pipeline": {
+    "schedule": "09:00",
+    "timezone": "America/Sao_Paulo",
+    "max_pautas": 10,
+    "min_score_publicacao": 65,
+    "parallel_agents": true,
+    "max_retries": 3
+  },
+  "agents": {
+    "trend_hunter": {
+      "enabled": true,
+      "max_trends": 20,
+      "score_threshold": 50,
+      "sources": ["google_trends", "reclame_aqui", "consumidor_gov", "jusbrasil", "news"]
+    },
+    "jurisprudencia": {
+      "enabled": true,
+      "tribunais_prioritarios": ["STJ", "TJSP", "TJRJ", "TJMG", "TJRS"],
+      "anos_retrospecto": 3,
+      "max_decisoes": 15
+    },
+    "social_pain": {
+      "enabled": true,
+      "fontes": ["reclame_aqui", "consumidor_gov", "reddit", "youtube"],
+      "max_relatos": 30
+    },
+    "content_strategist": {
+      "enabled": true,
+      "top_pautas": 10,
+      "formatos": ["carrossel", "reels", "seo_blog", "linkedin"]
+    },
+    "legal_risk": {
+      "enabled": true,
+      "nivel_rigor": "alto",
+      "bloquear_promessa_resultado": true,
+      "bloquear_fake_jurisprudence": true,
+      "bloquear_captacao_irregular": true
+    },
+    "carousel_writer": {
+      "enabled": true,
+      "slides_min": 7,
+      "slides_max": 12,
+      "anti_ai_pass": true
+    },
+    "reels_script": {
+      "enabled": true,
+      "duracao_segundos": [30, 45, 60, 90],
+      "formato_padrao": 60
+    },
+    "seo_blog": {
+      "enabled": true,
+      "palavras_min": 1500,
+      "palavras_max": 3000,
+      "schema_faq": true
+    },
+    "authority_linkedin": {
+      "enabled": true,
+      "tom": "tecnico-humano",
+      "max_caracteres": 3000
+    },
+    "editorial_chief": {
+      "enabled": true,
+      "aprovacao_automatica": false,
+      "gerar_relatorio": true
+    }
+  },
+  "scoring": {
+    "pesos": {
+      "urgencia": 0.20,
+      "conversao": 0.20,
+      "impacto_emocional": 0.15,
+      "viabilidade_juridica": 0.15,
+      "potencial_compartilhamento": 0.10,
+      "potencial_comentarios": 0.08,
+      "potencial_salvamento": 0.07,
+      "risco_juridico": 0.05
+    },
+    "penalidades": {
+      "tema_repetido_7d": -20,
+      "headline_similar": -15,
+      "saturacao_social": -10,
+      "risco_etico_alto": -50
+    }
+  },
+  "memoria": {
+    "janela_deduplicacao_dias": 30,
+    "max_headlines_memoria": 500,
+    "max_hooks_memoria": 200,
+    "max_temas_memoria": 300
+  },
+  "output": {
+    "formatos": ["carrossel", "reels", "seo_blog", "linkedin", "headline_bank", "hook_bank", "cta_bank"],
+    "salvar_json": true,
+    "salvar_markdown": true,
+    "relatorio_executivo": true
+  },
+  "etica": {
+    "restricoes": [
+      "nunca_prometer_resultado",
+      "nunca_inventar_jurisprudencia",
+      "nunca_captacao_irregular",
+      "nunca_tom_mercantilista",
+      "nunca_garantir_indenizacao",
+      "nunca_denegrir_concorrente"
+    ],
+    "oab_compliance": true,
+    "codigo_etica_oab": true
+  }
+}

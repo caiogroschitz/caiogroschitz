@@ -1,0 +1,27 @@
+{
+  "sistema": "Sistema Editorial Jurídico",
+  "criado_em": "2026-05-10T00:00:00",
+  "ultima_atualizacao": "2026-05-10T00:00:00",
+  "ciclos_executados": 0,
+  "temas_recentes": [],
+  "formatos_performance": {
+    "carrossel": {"usos": 0, "alto_engajamento": 0, "medio": 0, "baixo": 0},
+    "reels": {"usos": 0, "alto_engajamento": 0, "medio": 0, "baixo": 0},
+    "seo_blog": {"usos": 0, "alto_engajamento": 0, "medio": 0, "baixo": 0},
+    "linkedin": {"usos": 0, "alto_engajamento": 0, "medio": 0, "baixo": 0}
+  },
+  "estilos_aprovados": [
+    "narrativa de caso real despersonalizado",
+    "confronto direto com a narrativa do banco",
+    "revelação de direito que a vítima não sabia",
+    "desmistificação de objeção comum",
+    "dado jurisprudencial em linguagem simples"
+  ],
+  "padroes_linguagem": [
+    "usar 'você' diretamente",
+    "evitar 'o consumidor' na terceira pessoa",
+    "nomear o banco como ator ('o banco disse')",
+    "usar linguagem ativa, não passiva",
+    "terminar slides com gancho para o próximo"
+  ]
+}
