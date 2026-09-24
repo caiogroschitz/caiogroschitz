@@ -1,0 +1,7 @@
+# Dados de clientes e modelo timbrado não vão para o repositório
+*.xlsx
+*.docx
+*.csv
+*.pdf
+saida/
+__pycache__/
