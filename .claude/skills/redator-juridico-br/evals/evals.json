@@ -1,0 +1,23 @@
+{
+  "skill_name": "redator-juridico-br",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Meu cliente comprou uma geladeira nova numa loja online, pagou R$ 4.200 no cartão, o produto chegou com defeito no compressor, ele pediu troca dentro do prazo e a loja enrolou por 45 dias e nunca trocou nem devolveu o dinheiro. Quero processar a loja. Faz a petição inicial robusta com jurisprudência e gera o docx.",
+      "expected_output": "Petição inicial consumerista (CDC), com fatos em storytelling, teses de vício do produto e dano moral, jurisprudência STJ pesquisada, pedidos certos, valor da causa, e arquivo .docx gerado.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Recebi uma sentença que julgou improcedente minha ação de cobrança. Preciso de uma apelação atacando a fundamentação. Deixa robusta e me entrega em Word.",
+      "expected_output": "Apelação cível com cabeçalho, razões de reforma atacando a sentença, prequestionamento, pedidos de provimento, e .docx.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Sou reclamado numa ação trabalhista. O ex-funcionário pede horas extras e vínculo. Faz a contestação.",
+      "expected_output": "Contestação trabalhista com preliminares cabíveis, impugnação especificada dos fatos, teses defensivas sobre vínculo e horas extras, ônus probatório, pedidos.",
+      "files": []
+    }
+  ]
+}
