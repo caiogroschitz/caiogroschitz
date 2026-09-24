@@ -112,9 +112,15 @@ def enderecamento(item, uf, justica):
     """
     if item.get("enderecamento_astrea"):
         return item["enderecamento_astrea"].strip(), ""
-    vara = _acentua(" ".join((item["vara"] or "").split()))
-    foro = _acentua(" ".join((item["foro"] or "").split()))
-    obs = "Endereçamento montado pela planilha (vara/foro): conferir no Astrea ou nos autos."
+    if item.get("orgao_oficial"):
+        # Nome oficial do órgão julgador (DataJud/DJEN) substitui a coluna Vara da planilha.
+        vara = _acentua(" ".join(item["orgao_oficial"].split()))
+        foro = _acentua(" ".join((item["foro"] or "").split()))
+        obs = f"Endereçamento montado a partir do órgão julgador oficial: “{item['orgao_oficial']}”."
+    else:
+        vara = _acentua(" ".join((item["vara"] or "").split()))
+        foro = _acentua(" ".join((item["foro"] or "").split()))
+        obs = "Endereçamento montado pela planilha (vara/foro): conferir no Astrea ou nos autos."
     if justica == "4":
         juizo = re.sub(r"(?i)^juízo\s+(substituto\s+)?d[ao]\s+", "", vara)
         cidade = _limpa_cidade(foro, uf).upper() or "[CIDADE]"
@@ -299,6 +305,7 @@ CORES = {
     "Minuta com marcador — completar antes de protocolar": "FFEB9C",
     "Sem minuta — pendência": "F4CCCC",
     "Minuta já existia — não refeita": "DDEBF7",
+    "Minuta — EXIGE VALIDAÇÃO antes de protocolar": "F8CBAD",
 }
 
 
@@ -358,7 +365,7 @@ def main():
         autor = item.get("autor", "").strip().upper() or MARCA_AUTOR
         linha = {"linha": item["linha_planilha"], "processo": item["processo"], "prioridade": item["prioridade"],
                  "dias": item["dias_parado"], "providencia": item["providencia"], "reu": reu,
-                 "autor": autor, "fonte_autor": "Astrea" if autor != MARCA_AUTOR else "—", "oab": oab or "—"}
+                 "autor": autor, "fonte_autor": ("DJEN" if item.get("busca_status") else "Astrea") if autor != MARCA_AUTOR else "—", "oab": oab or "—"}
         if item.get("obs_astrea"):
             obs.append(f"Astrea: {item['obs_astrea']}")
         if "ATENÇÃO" in item.get("detalhamento", ""):
@@ -376,13 +383,20 @@ def main():
                              "arquivo": ""})
             continue
         data_hist = ""
-        if item.get("data_ult_historico"):
+        if item.get("ult_mov_data"):
+            data_hist = data_extenso(datetime.date.fromisoformat(item["ult_mov_data"]))
+            obs.append(f"Última movimentação (DataJud): {item['ult_mov_data']} – {item.get('ult_mov_nome', '')}.")
+        elif item.get("data_ult_historico"):
             try:
                 data_hist = data_extenso(datetime.date.fromisoformat(item["data_ult_historico"]))
                 obs.append("Data de paralisação tirada do último histórico do Astrea (planilha): conferir com a "
                            "última movimentação nos autos.")
             except ValueError:
                 pass
+        if item.get("ult_publicacao"):
+            obs.append(f"Última publicação (DJEN): {item['ult_publicacao'][:200]}")
+        if item.get("busca_status") and item["busca_status"] != "ok":
+            obs.append(f"Busca automática: {item['busca_status']}.")
         t = textos(item, data_hist)
         if t is None:
             controle.append({**linha, "status": "Sem minuta — pendência",
@@ -411,6 +425,10 @@ def main():
             geradas += 1
             status = ("Minuta com marcador — completar antes de protocolar" if marcadores
                       else "Minuta pronta para revisão")
+            if item.get("alerta_movimentos"):
+                status = "Minuta — EXIGE VALIDAÇÃO antes de protocolar"
+        if item.get("alerta_movimentos"):
+            obs.insert(0, f"Movimentos de sentença/extinção/arquivamento: {item['alerta_movimentos']}.")
         if marcadores:
             obs.insert(0, "Marcadores a completar: " + ", ".join(marcadores) + ".")
         controle.append({**linha, "status": status, "obs": " ".join(obs), "arquivo": nome})

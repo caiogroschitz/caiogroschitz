@@ -20,7 +20,15 @@ O script lê a aba "Saneamento" e grava o `lote.csv`, com um processo por linha,
 
 Ao rodar o script de novo, o que já foi preenchido no `lote.csv` é mantido.
 
-## 2. Conferir no Astrea (uma aba só)
+## 2. Buscar os dados nos tribunais (automático)
+
+```bash
+python buscar_dados.py lote.csv
+```
+
+Para cada processo, consulta o DataJud (órgão julgador oficial e última movimentação) e o DJEN (parte autora e última publicação). São APIs públicas do CNJ, sem login e sem CAPTCHA. Cada processo é consultado uma vez; o que falhar fica anotado em `busca_status`, e o lote segue. O gerador usa esses dados no lugar dos marcadores e da planilha.
+
+## 2b. Conferir no Astrea (opcional, uma aba só)
 
 Para cada linha do `lote.csv`, busque o número do processo no Astrea, na mesma aba, e preencha:
 
