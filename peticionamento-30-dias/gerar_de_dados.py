@@ -88,10 +88,13 @@ def montar(modelo, destino, d, pedido, corpo, oab, fecho):
         _p([(d["enderecamento"], True)]),
         _p([]), _p([]),
         _p([(f"Autos nº {d['processo']}", True)]),
-        _p([(d["reu"], True), (f", {qualif} nos autos em epígrafe, em que contende{'m' if plural else ''} com ",
-                               False), (d["autor"], True),
-            (f", {verbo}, respeitosamente, à presença de Vossa Excelência, por seus advogados infra-assinados, "
-             "requerer ", False), (pedido, True), (", nos termos a seguir dispostos.", False)],
+        _p([(d["reu"], True)]
+           # Sem o nome da parte contrária numa fonte pública, a qualificação fica só "nos autos em epígrafe".
+           + ([(f", {qualif} nos autos em epígrafe, em que contende{'m' if plural else ''} com ", False),
+               (d["autor"], True)] if d.get("autor") and d["autor"] != "—" else
+              [(f", {qualif} nos autos em epígrafe", False)])
+           + [(f", {verbo}, respeitosamente, à presença de Vossa Excelência, por seus advogados infra-assinados, "
+               "requerer ", False), (pedido, True), (", nos termos a seguir dispostos.", False)],
            esquerda=0, primeira_linha=0),
     ]
     novos += [_p([(c, False)], primeira_linha=indent) for c in corpo]
