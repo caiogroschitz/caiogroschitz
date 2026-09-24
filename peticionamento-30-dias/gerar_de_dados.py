@@ -150,6 +150,7 @@ def main():
     ap.add_argument("modelo")
     ap.add_argument("--pasta", required=True)
     ap.add_argument("--data")
+    ap.add_argument("--lote", help="lote.csv: inclui no controle os casos sem minuta por natureza (acordo etc.)")
     a = ap.parse_args()
     fecho = data_extenso(datetime.date.fromisoformat(a.data) if a.data else datetime.date.today())
     os.makedirs(a.pasta, exist_ok=True)
@@ -173,11 +174,24 @@ def main():
             continue
         pedido, corpo = corpo_por_tipo(d)
         montar(a.modelo, destino, d, pedido, corpo, oab, fecho)
-        controle.append({**linha, "status": "Minuta pronta para revisão", "arquivo": nome})
+        validar = d.get("validar") or "[" in d["enderecamento"]
+        controle.append({**linha, "status": ("Minuta — EXIGE VALIDAÇÃO antes de protocolar" if validar
+                                             else "Minuta pronta para revisão"), "arquivo": nome})
 
+    if a.lote:
+        import csv
+        from gerar_minutas import SEM_MINUTA
+        with open(a.lote, newline="", encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                if r["providencia"] in SEM_MINUTA:
+                    controle.append({"linha": r["linha_planilha"], "processo": r["processo"], "prioridade": r["prioridade"],
+                                     "dias": r["dias_parado"], "providencia": r["providencia"], "reu": "", "autor": "",
+                                     "fonte_autor": "—", "oab": "—", "status": "Sem minuta — pendência",
+                                     "obs": SEM_MINUTA[r["providencia"]], "arquivo": ""})
     gravar_controle(os.path.join(a.pasta, "Controle - Peticionamento 30 dias.xlsx"), controle)
-    prontas = sum(1 for c in controle if c["status"] == "Minuta pronta para revisão")
-    print(f"{prontas} minutas geradas; {len(controle) - prontas} sem minuta/pendência")
+    from collections import Counter
+    for k, v in Counter(c["status"] for c in controle).items():
+        print(f"{v:3d}  {k}")
 
 
 if __name__ == "__main__":
