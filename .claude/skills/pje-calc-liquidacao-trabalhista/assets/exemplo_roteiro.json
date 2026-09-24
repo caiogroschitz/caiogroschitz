@@ -1,0 +1,148 @@
+{
+  "processo": {
+    "numero": "0000001-42.2017.5.08.0001",
+    "vara": "1ª Vara do Trabalho de Belém/PA (exemplo do material de treinamento)",
+    "reclamante": "José da Silva",
+    "reclamado": "Empresa de Transporte Ltda",
+    "titulo_fonte": "Sentença (exemplo Módulo II, Aula 1)"
+  },
+  "lembretes_iniciais": [
+    "Atualizar as tabelas/índices on-line no PJe-Calc antes de iniciar o cálculo."
+  ],
+  "parametros_processo": [
+    {"campo": "Data de admissão", "valor": "09/06/2014", "fonte": "Contrato / inicial", "observacao": ""},
+    {"campo": "Data de demissão", "valor": "20/09/2016", "fonte": "TRCT", "observacao": "Aviso prévio indenizado — atentar à projeção"},
+    {"campo": "Data do ajuizamento", "valor": "10/04/2017", "fonte": "Autos", "observacao": "Marco dos juros"},
+    {"campo": "Maior remuneração", "valor": "R$ 1.200,00", "fonte": "Holerites", "observacao": ""},
+    {"campo": "Última remuneração", "valor": "R$ 1.200,00", "fonte": "TRCT", "observacao": ""}
+  ],
+  "historico_salarial": [
+    {"periodo": "Contrato (09/06/2014 a 20/09/2016)", "salario": "R$ 1.200,00", "fonte": "Holerites", "observacao": "13º pagos: 2014 R$700,00; 2015 R$1.200,00"}
+  ],
+  "faltas_ferias": [],
+  "verbas": [
+    {
+      "nome": "Aviso prévio indenizado",
+      "periodo": "Rescisão (20/09/2016) + projeção",
+      "base_calculo": "Última remuneração R$ 1.200,00",
+      "adicional_divisor": "Proporcional ao tempo de serviço (Lei 12.506/2011)",
+      "natureza": "Indenizatória",
+      "incidencias": ["FGTS"],
+      "reflexos": [],
+      "deducoes": "",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": ""
+    },
+    {
+      "nome": "13º salário proporcional",
+      "periodo": "2016 (proporcional)",
+      "base_calculo": "R$ 1.200,00",
+      "adicional_divisor": "Proporcional (avos)",
+      "natureza": "Salarial",
+      "incidencias": ["FGTS", "INSS", "IRPF"],
+      "reflexos": [],
+      "deducoes": "",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": ""
+    },
+    {
+      "nome": "Férias (dobro, simples e proporcionais) + 1/3",
+      "periodo": "Períodos aquisitivos do contrato",
+      "base_calculo": "R$ 1.200,00 + 1/3",
+      "adicional_divisor": "Em dobro p/ período fora do prazo",
+      "natureza": "Indenizatória",
+      "incidencias": [],
+      "reflexos": [],
+      "deducoes": "",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": "Confirmar quais períodos são em dobro x simples x proporcional."
+    },
+    {
+      "nome": "Saldo de salário",
+      "periodo": "09/2016 (dias trabalhados)",
+      "base_calculo": "R$ 1.200,00",
+      "adicional_divisor": "Proporcional aos dias",
+      "natureza": "Salarial",
+      "incidencias": ["FGTS", "INSS", "IRPF"],
+      "reflexos": [],
+      "deducoes": "",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": ""
+    },
+    {
+      "nome": "FGTS + multa de 40%",
+      "periodo": "Todo o contrato",
+      "base_calculo": "Salários pagos, aviso prévio, 13º proporcional e saldo de salário",
+      "adicional_divisor": "8% + multa 40%",
+      "natureza": "Indenizatória",
+      "incidencias": [],
+      "reflexos": [],
+      "deducoes": "Descontar depósitos já efetuados (extrato FGTS)",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": "Localizar extrato do FGTS para deduzir o depositado."
+    },
+    {
+      "nome": "Multa do art. 477 da CLT",
+      "periodo": "Rescisão",
+      "base_calculo": "Equivalente a um salário",
+      "adicional_divisor": "—",
+      "natureza": "Indenizatória",
+      "incidencias": [],
+      "reflexos": [],
+      "deducoes": "",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": ""
+    },
+    {
+      "nome": "Multa do art. 467 da CLT",
+      "periodo": "Rescisão",
+      "base_calculo": "50% sobre aviso prévio, 13º, férias + 1/3, saldo de salário e multa de 40% do FGTS",
+      "adicional_divisor": "50%",
+      "natureza": "Indenizatória",
+      "incidencias": [],
+      "reflexos": [],
+      "deducoes": "",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": "Conferir exatamente as verbas sobre as quais o título mandou incidir."
+    },
+    {
+      "nome": "Salário-família",
+      "periodo": "Contrato",
+      "base_calculo": "2 cotas",
+      "adicional_divisor": "Valor da cota (tabela)",
+      "natureza": "Indenizatória",
+      "incidencias": [],
+      "reflexos": [],
+      "deducoes": "",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": ""
+    },
+    {
+      "nome": "Seguro-desemprego (indenização substitutiva)",
+      "periodo": "Rescisão",
+      "base_calculo": "5 parcelas",
+      "adicional_divisor": "Conforme faixa",
+      "natureza": "Indenizatória",
+      "incidencias": [],
+      "reflexos": [],
+      "deducoes": "",
+      "fonte": "Sentença — verbas deferidas",
+      "conferir": ""
+    }
+  ],
+  "correcao_juros": {
+    "regime": "Na ausência de critério específico no título, aplicar o regime vigente das tabelas oficiais do PJe-Calc (pós-ADC 58 e Lei 14.905/2024).",
+    "marco_correcao": "Vencimento de cada parcela (época própria)",
+    "juros_data_inicial": "Ajuizamento (10/04/2017)",
+    "fonte": "Sentença",
+    "conferir": "Validar índices na tabela atualizada do PJe-Calc; verificar período após 30/08/2024."
+  },
+  "itens_conferir": [
+    "Este é um exemplo didático: substitua todos os valores pelos parâmetros reais extraídos dos autos, com a fonte (ID/fl.) de cada um."
+  ],
+  "encerramento": [
+    "Rodar a checagem de inconsistências do PJe-Calc.",
+    "Conferir o relatório gerado contra o dispositivo da sentença.",
+    "Exportar o arquivo .pjc e o PDF; juntar ambos na petição (TRT2)."
+  ]
+}

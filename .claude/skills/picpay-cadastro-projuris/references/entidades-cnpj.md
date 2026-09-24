@@ -1,0 +1,17 @@
+# Entidades do Grupo PicPay (CNPJs)
+
+Cadastrar no Polo Passivo a entidade **exata** indicada na inicial. Havendo mais de uma, registrar todas
+e marcar "Mais de uma empresa do grupo no Polo? = Sim".
+
+| Entidade | CNPJ |
+|---|---|
+| PICPAY INSTITUICAO DE PAGAMENTO S.A. | 22.896.431/0001-10 |
+| PICPAY BANK - BANCO MULTIPLO S.A. | 09.516.419/0001-75 |
+| CREDNOVO SOCIEDADE DE EMPRESTIMO ENTRE PESSOAS S.A. | 38.146.949/0001-77 |
+| PICPAY INVEST DISTRIBUIDORA DE TITULOS E VALORES MOBILIARIOS LTDA | 07.138.049/0001-54 |
+| GUIABOLSO FINANCAS CORRESPONDENTE BANCARIO E SERVICOS LTDA | 15.674.094/0001-51 |
+| GUIABOLSO PAGAMENTOS LTDA | 23.829.172/0001-78 |
+| BX NEGOCIOS INTELIGENTES LTDA | 22.530.382/0001-06 |
+| FUNDO DE INVESTIMENTO EM DIREITOS CREDITORIOS NAO PADRONIZADOS PICPAY I | 32.527.650/0001-86 |
+
+Nota: PicPay e Banco Original no polo -> cadastrar no ambiente do PicPay, patrocinio em nome de ambos.
