@@ -48,6 +48,33 @@ def corpo_por_tipo(d):
             "embargos de declaração em mesa na sessão subsequente. Assim, "
             f"{DURACAO}, {quem} a inclusão dos embargos de declaração em pauta e o seu julgamento.",
         ]
+    if tipo == "julgamento_ed_1g":
+        return "o JULGAMENTO DOS EMBARGOS DE DECLARAÇÃO", [
+            d["fato"],
+            "Nos termos do art. 1.024 do Código de Processo Civil, o juiz julgará os embargos de declaração em "
+            f"cinco dias. Assim, {DURACAO}, {quem} o julgamento dos embargos de declaração, com o regular "
+            "prosseguimento do feito.",
+        ]
+    if tipo == "julgamento_recurso":
+        return "a INCLUSÃO DO RECURSO EM PAUTA DE JULGAMENTO", [
+            d["fato"],
+            f"Assim, {DURACAO}, {quem} a inclusão do recurso inominado em pauta e o seu julgamento.",
+        ]
+    if tipo == "saneamento":
+        return "o SANEAMENTO DO FEITO OU O JULGAMENTO ANTECIPADO DO MÉRITO", [
+            d["fato"],
+            f"Assim, {DURACAO}, {quem} o julgamento antecipado do mérito, nos termos do art. 355, I, do Código "
+            "de Processo Civil, por se tratar de matéria que dispensa a produção de outras provas, ou, "
+            "subsidiariamente, a prolação de decisão de saneamento e organização do processo (art. 357 do CPC), "
+            "com a designação de audiência, se necessária.",
+        ]
+    if tipo == "habilitacao":
+        return "a JUNTADA DO INSTRUMENTO DE MANDATO E O CADASTRAMENTO DE SEUS PATRONOS", [
+            d["fato"],
+            "Para a regular representação processual, a ré junta o instrumento de mandato e os atos constitutivos "
+            "anexos, e requer o cadastramento de seus patronos no sistema processual, para que passem a receber "
+            f"as intimações. Requer, ainda, {DURACAO}, o regular prosseguimento do feito.",
+        ]
     if tipo == "sentenca":
         return "a CONCLUSÃO DOS AUTOS PARA PROLAÇÃO DE SENTENÇA", [
             d["fato"],
